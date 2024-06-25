@@ -1,0 +1,14 @@
+[
+  {
+    "category_name": "Android",
+    "category_id": "01"
+  },
+  {
+    "category_name": "Tablet",
+    "category_id": "02"
+  },
+  {
+    "category_name": "IOS",
+    "category_id": "03"
+  }
+]
