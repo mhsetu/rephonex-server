@@ -7,7 +7,7 @@ app.use(express.json());
 const dotenv = require('dotenv');
 const phones = require('./phones.json');
 dotenv.config();
-const port = process.env.PORT || 7000;
+const port = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
