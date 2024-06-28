@@ -7,7 +7,7 @@ app.use(express.json());
 const dotenv = require('dotenv');
 const phones = require('./phones.json');
 dotenv.config();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 7000;
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -54,25 +54,25 @@ async function run() {
       const phone = req.query;
       console.log('/phone', phone);
       const result = await phoneCollection.find(phone).toArray();
-      // console.log(result);
+      console.log('ka', result);
       res.send(result);
     });
 
     app.post('/phones', async (req, res) => {
       const user = req.body;
-      // console.log(user);
+      console.log('as', user);
       const result = await phoneCollection.insertOne(user);
-      console.log(result);
+      console.log('sa', result);
       res.send(result);
     });
 
     app.delete('/phones/:id', async (req, res) => {
       const id = req.params.id;
       console.log('product_id', id);
-      // console.log(user);
+      console.log('aksudaskf', user);
       const query = { _id: new ObjectId(id) };
       const result = await phoneCollection.deleteOne(query);
-      console.log(result);
+      console.log('dfdfddd', result);
       res.send(result);
     });
 
@@ -85,7 +85,7 @@ async function run() {
 
     app.post('/User', async (req, res) => {
       const user = req.body;
-      console.log(user);
+      console.log('sdfddss', user);
       const result = await UsersCollection.insertOne(user);
       res.send(result);
     });
@@ -93,14 +93,14 @@ async function run() {
     app.get('/users', async (req, res) => {
       const query = req.query;
       const result = await UsersCollection.find(query).toArray();
-      // console.log(result);
+      console.log('fsfds', result);
       res.send(result);
     });
 
     app.post('/users', async (req, res) => {
       const email = req.query.email;
       const person = req.query.person;
-      // console.log(email, person);
+      console.log('sssss', email, person);
       const query = { email: email, person: person };
       const result = await UsersCollection.findOne(query);
       res.send(result);
@@ -152,7 +152,7 @@ async function run() {
 
     app.post('/meeting', async (req, res) => {
       const meeting = req.body;
-      // console.log(meeting);
+      console.log('mm', meeting);
       const result = await MeetingCollection.insertOne(meeting);
       res.send(result);
     });
@@ -166,7 +166,7 @@ async function run() {
 
     app.get('/meetings', async (req, res) => {
       const query = req.query;
-      // console.log(query);
+      console.log('ss', query);
       const result = await MeetingCollection.find(query).toArray();
       res.send(result);
     });
