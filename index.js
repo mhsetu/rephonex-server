@@ -30,6 +30,7 @@ async function run() {
     const categoryCollection = client.db('RePhoneX').collection('Category');
     const UsersCollection = client.db('RePhoneX').collection('SellerUser');
     const MeetingCollection = client.db('RePhoneX').collection('Meeting');
+    const AdvertiseCollection = client.db('RePhoneX').collection('Advertise');
 
     app.get('/category', async (req, res) => {
       const query = {};
@@ -69,7 +70,6 @@ async function run() {
     app.delete('/phones/:id', async (req, res) => {
       const id = req.params.id;
       console.log('product_id', id);
-      console.log('aksudaskf', user);
       const query = { _id: new ObjectId(id) };
       const result = await phoneCollection.deleteOne(query);
       console.log('dfdfddd', result);
@@ -168,6 +168,28 @@ async function run() {
       const query = req.query;
       console.log('ss', query);
       const result = await MeetingCollection.find(query).toArray();
+      res.send(result);
+    });
+
+    app.post('/advertises', async (req, res) => {
+      const query = req.body;
+      console.log(query);
+      const result = await AdvertiseCollection.insertOne(query);
+      console.log(result);
+      res.send(result);
+    });
+    app.delete('/advertises/:id', async (req, res) => {
+      const id = req.params.id;
+      console.log(id);
+      const query = { _id: new ObjectId(id) };
+      const result = await AdvertiseCollection.deleteOne(query);
+      console.log(result);
+      res.send(result);
+    });
+
+    app.get('/advertise', async (req, res) => {
+      const query = {};
+      const result = await AdvertiseCollection.find(query).toArray();
       res.send(result);
     });
   } finally {
